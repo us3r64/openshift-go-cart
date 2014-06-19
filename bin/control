@@ -36,7 +36,7 @@ function start() {
 
     pushd "$OPENSHIFT_REPO_DIR" > /dev/null
     {
-	package=$(basename $(get_godir))
+        package=$(basename $(get_godir))
 
         if [ -f "bin/$package" ]; then
             echo "`date +"$FMT"`: Starting application '$OPENSHIFT_APP_NAME' from bin/$package..."

@@ -18,7 +18,7 @@ echo ${OPENSHIFT_GO_DIR}/logs > ${OPENSHIFT_GO_DIR}/env/OPENSHIFT_GO_LOG_DIR
 ###
 pushd $OPENSHIFT_GO_DIR > /dev/null
 for dir in logs tmp pid cache; do
-	mkdir -p $dir
+        mkdir -p $dir
 done
 popd > /dev/null
 

@@ -4,6 +4,7 @@ Display-Name: Go 1.5.2
 Version: "1.5.2"
 Versions: ["1.5.2","1.4.2","1.4.1", "1.4", "1.3.1","1.2.2","1.1.2", "1.0.3"]
 Website: https://github.com/us3r64/openshift-go-cart
+Source-Url: git://github.com/us3r64/openshift-go-cart.git
 Cartridge-Version: 0.0.1
 Cartridge-Vendor: us3r64
 Categories:

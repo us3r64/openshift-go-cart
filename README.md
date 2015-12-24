@@ -15,11 +15,13 @@ When you push code to the repo, the cart will compile your package into <code>$O
 
     $OPENSHIFT_REPO_DIR/bin/goexample
 
-If you want to serve web requests (vs. running in the background), you'll need to listen on the ip address and port that OpenShift allocates - those are available as HOST and PORT in the environment.
+If you want to serve web requests (vs. running in the background), you'll need to listen on the ip address and port that OpenShift allocates - those are available as OPENSHIFT_GO_IP and OPENSHIFT_GO_PORT in the environment.
 
 The repository contains a sample go file which will print "hello, world" when someone hits your web application - see [web.go](https://github.com/smarterclayton/openshift-go-cart/blob/master/template/web.go).
 
-Any log output will be generated to <code>$OPENSHIFT_GO_LOG_DIR</code>
+Any log output will be generated to <code>$OPENSHIFT_GO_LOG_DIR</code>.
+
+To provide your own custom GOPATH directory, add a ".gopath" file to the root of your Git repo with the desired GOPATH location, *relative to the $OPENSHIFT_HOMEDIR directory*. Example of a .gopath file content: `app-root/data/mygopath`. The specified location will be additive to the existing GOPATH provided by the cartridge as the *first path* declared in GOPATH (notice the [GOPATH spec](http://golang.org/cmd/go/#hdr-GOPATH_environment_variable) defines that "Go searches each directory listed in GOPATH to find source code, but new packages are always downloaded into the first directory in the list"). 
 
 
 How it Works
@@ -29,7 +31,7 @@ When you push code to your repo, a Git postreceive hook runs and invokes the bin
 
     go get -tags openshift ./...
 
-on a working copy of your source.  The main file that you run will have access to two environment variables, $HOST and $PORT, which contain the internal address you must listen on to receive HTTP requests to your application.
+on a working copy of your source.  The main file that you run will have access to two environment variables, $OPENSHIFT_GO_IP and $OPENSHIFT_GO_PORT, which contain the internal address you must listen on to receive HTTP requests to your application.
 
 
 Credits

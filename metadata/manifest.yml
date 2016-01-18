@@ -28,6 +28,9 @@ Publishes:
   publish-gear-endpoint:
     Type: "NET_TCP:gear-endpoint-info"
 Subscribes:
+  set-env:
+    Type: "ENV:*"
+    Required: false
   set-db-connection-info:
     Type: "ENV:NET_TCP:db:connection-info"
     Required: false
